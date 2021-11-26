@@ -5,7 +5,11 @@ In this article, we will set some CRUD API using:
 - MongoDB (NoSQL Database)
 - Docker (Platform to deploy applications using containers)
 
-GitHub Repository: https://github.com/FrancescoXX/nest-mongo-docker
+Video Version: https://youtu.be/2eY_iQ9iCtE
+[![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1637937405008/ft4jl4QS2.png)](https://youtu.be/2eY_iQ9iCtE)
+
+
+GitHub Repository: https://github.com/FrancescoXX/nest-docker
 
 ___
 Prerequisite: NodeJs installed, Docker (Docker desktop on windows/Mac Machines, Docker installed natively on Linux)
@@ -26,6 +30,8 @@ NestJs is a Node.js framework for building efficient and scalable applications, 
 - Providers
 - Controllers
 - Services
+
+
 ___
 
 ## Mongoose
@@ -58,8 +64,6 @@ Docker is a platform to build run and share application using the idea of contai
 
 https://youtu.be/eN_O4zd4D9o
 ___
-
-# Let's START!
 
 ### Project Setup
 
@@ -120,9 +124,9 @@ nest generate service users
 nest generate module users
 ```
 
-in the `src` folder and let's create a user.module.ts file. From the command line, you can type:
+in the `src/users` folder and let's create a user.module.ts file. From the command line, you can type:
 ```
-touch user.model.ts
+touch src/users/user.model.ts
 ```
 
 Our project structure should look like this:
@@ -223,13 +227,13 @@ export class UsersController {
   @Post()
   async createOneUser(
     @Body('name') name: string,
-    @Body('surname') surname: string,
-    @Body('points') points: number,
+    @Body('email') email: string,
+    @Body('password') password: string,
   ) {
     const generatedId = await this.usersService.createOneUser(
       name,
-      surname,
-      points,
+      email,
+      password,
     );
     return { id: generatedId };
   }
@@ -272,7 +276,6 @@ export class UsersModule {}
 
 ```
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1611141025145/I4jKuJozm.png)
 in the app.module.ts
 
 ```typescript
@@ -365,7 +368,7 @@ services:
       - .env
 ```
 
-the .env fike:
+the .env file:
 
 Replace the XXXXX with your MongoDB Atlas User and Password
 ```
@@ -439,32 +442,10 @@ Let's check on Atlas
 
 ![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1611141655899/tiJeumlHY.png)
 
-Here you can see the 3 users
-
-Let's try the Get One, which is used to get just one user, using an id
-
-Remember to change your id with the one you can see with the get all request!
-
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1611141711490/DMdGkqkYn.png)
-
-Let's try to UPDATE one filed of the first user, using a PATCh Request
-
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1611141795992/HXABd9kBw.png)
-
-Let's check it again using the Get (One) request
+Video Version: https://youtu.be/2eY_iQ9iCtE
+[![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1637937405008/ft4jl4QS2.png)](https://youtu.be/2eY_iQ9iCtE)
 
 
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1611141830729/oB3JwlT1d.png)
-
-Last, let's try to delete the last user (check its id using the get all)
-
-
-![image.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1611141899900/1g_2ITsbV.png)
-
-
-And as you can see, the user has been correctly deleted!
-
-
-GitHub Repository: https://github.com/FrancescoXX/nest-mongo-docker
+GitHub Repository: https://github.com/FrancescoXX/nest-docker
 
 If this article has been interesting, consider becoming a GitHub Sponsor: https://github.com/sponsors/FrancescoXX
